@@ -1,6 +1,6 @@
 #Read with seperator ';' and na strings as '?'
 input = read.table('household_power_consumption.txt',sep=';',na.strings='?',header=TRUE)
-
+subset_input <- subset(input,(Date %in% c('1/2/2007','2/2/2007')))
 subset_input$newdate <- apply(subset_input[,c('Date','Time')],1,paste,collapse=" ")
 
 subset_input$newdate <- strptime(subset_input$newdate,"%d/%m/%Y %H:%M:%S")
